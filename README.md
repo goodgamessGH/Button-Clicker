@@ -3,7 +3,7 @@ Orteil's "Cookie Clicker" and will have some similar features, in order
 to visit button clicker, please go to:
 
 
-                 https://goodgamessgh.github.io/Button-Clicker/
+https://goodgamessgh.github.io/Button-Clicker/
 
 
 
