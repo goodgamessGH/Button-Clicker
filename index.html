@@ -1,0 +1,159 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Button Clicker!</title>
+    <link rel="icon" href="https://static1.codehs.com/img/logo.png">
+    
+    <style>
+        body {
+            font-family: Arial, Helvetica, Serif;
+        }
+        .button1 {
+            display: block;
+            margin: Auto;
+            border-radius: 2rem;
+            height: 75px;
+            width: 150px;
+            font-size: 25px;
+            transition: .4s;
+            transform: scale(1) rotate(0deg);
+        }
+        .button1:hover {
+            transition: .4s;
+            transform: scale(1.1)
+        }
+        .button1:active {
+            transition: .1s;
+            transform: rotate(2deg);
+        }
+
+
+        /* for debugging or modding, just erase this line to see the divs
+         div {
+            background-color: cyan;
+            border-color: black;
+            border-width: 5px;
+            border-style: solid;
+        }   */
+        
+        .ClickDisplay {
+            width: 120px;
+            text-align: center;
+            margin: Auto;
+        }
+    </style>
+  </head>
+  <body>
+      <style> 
+        .clickindicator {
+                color: #0055ff;
+                position: absolute;
+                z-index: 1000;
+                animation: float-away 1s 1;
+            }
+
+            @keyframes float-away {
+                from {opacity: 100%; transform: translate(0px, 0px);}
+                to {opacity: 0; transform: translate(0px, -85px);;
+            }
+        
+    </style>
+
+    <h1>Welcome to my webpage!</h1>
+    <a href="https://gg0games.codehs.me/" target="_blank">gg0games.codehs.me</a>
+    <br>
+    <br>
+    
+
+    <div class="ClickDisplay" id="ClickDisplay">
+        Clicks: 0
+    </div>
+    
+
+    <div class="1">
+        <br>
+        <button title="I give you clicks!" class="button1" id="button1">Click Me!</button>
+    </div>
+    
+    <br>
+    <br>
+    <br>
+    <button id="addcps">Auto Clicker👆 cost: 15</button> <button id="click-up">Click Up↑ Cost: 150</button>
+    
+    <br>
+    <br>
+    <br>
+    
+    <div>
+        Fun things: 
+        <br>
+        <input title="Set the background color" id="colorpick" type="color"></input>
+        <button id="colorsubmit">change color</button>
+    </div>
+    <br><br>
+    Version: Github 1.0
+
+    <script>
+        let multiprice = 150;
+        let clicks = 0;
+        let clickup = 1;
+        let cpsPrice = 15;
+        let cpsRate = 0;
+        let popupos;
+        const body = document.body;
+        const colorpick = document.getElementById("colorpick");
+        const ADDCPS = document.getElementById("addcps");
+        const clickupgrader = document.getElementById("click-up");
+        const ClickDisplay = document.getElementById("ClickDisplay");
+        const button1 = document.getElementById("button1");
+        const colorsubmit = document.getElementById("colorsubmit");
+
+        
+        button1.onclick = function() {
+            clicks += clickup;
+            ClickDisplay.textContent = "Clicks: " + clicks;
+            let box = document.createElement('div');
+            box.innerHTML = "+" + clickup;
+            box.classList.add('clickindicator');
+            document.body.appendChild(box);
+            popupos = event.clientX - 10 + Math.floor(Math.random() * 22) + "px";
+            box.style.left = String(popupos);
+            box.style.top = String(event.clientY - 25) + "px";
+            console.log(box.style.left)
+            setTimeout(function() {
+                box.remove();
+            }, 995)
+        };
+        clickupgrader.onclick = function() {
+            if(clicks > multiprice - 1) {
+                clickup++
+                clicks = clicks - multiprice
+                multiprice = multiprice * 1.5
+                multiprice = Math.round(multiprice)
+                ClickDisplay.textContent = "Clicks: " + clicks; 
+                clickupgrader.textContent = "Click Up↑ Cost: " + multiprice;
+            }
+        }
+        ADDCPS.onclick = function() {
+            if (clicks > cpsPrice - 1) {
+                cpsRate = cpsRate + 1;
+                clicks = clicks - cpsPrice;
+                cpsPrice = cpsPrice * 1.5;
+                cpsPrice = Math.round(cpsPrice);
+                ADDCPS.textContent = "Auto Clicker👆 cost: " + cpsPrice
+                ClickDisplay.textContent = "Clicks: " + clicks;
+                setInterval(function() {
+                    clicks = clicks + cpsRate;
+                    ClickDisplay.textContent = "Clicks: " + clicks;
+                    console.log("Tap!");
+                }, 1010); 
+            }
+        } 
+        colorsubmit.onclick = function() {
+            document.body.style.backgroundColor = colorpick.value
+        }
+    </script>
+    
+  </body>
+</html>
