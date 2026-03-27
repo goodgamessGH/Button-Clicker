@@ -4,3 +4,8 @@ to visit button clicker, please go to:
 
 
                  https://goodgamessgh.github.io/Button-Clicker/
+
+
+
+
+Also yes, I used <script> tags, for now at least.
