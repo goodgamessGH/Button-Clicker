@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html>
   <head>
@@ -91,7 +90,27 @@
         <button id="colorsubmit">change color</button>
     </div>
     <br><br>
-    Version: Github 1.0
+    V: 1.1
+
+    <br><br>
+    <button id="changelog" onclick="cLogToggle()">Changelog</button>
+    
+    <div id="cLogDiv" style="display: none;">
+        V: 1.1: Added a hangelog and fixed a syntax error with the animations.
+    </div>
+    <script>
+        let cLogDiv = document.getElementById("cLogDiv");
+        let state = false;
+        function cLogToggle() {
+            state = !state;
+            if(state) {
+                cLogDiv.style.display = "block";
+            } else {
+                cLogDiv.style.display = "none";
+            }
+        }
+    </script>
+
 
     <script>
         let multiprice = 150;
